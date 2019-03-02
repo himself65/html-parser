@@ -1,17 +1,22 @@
 export interface Element {
-  name: 'div' | 'span' | 'html' | 'body'
-    | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' // todo
+  name: string
   attr: {
     class: string,
     style: object,
-    listeners: []
+    listeners: object
   }
 }
 
-export const legalStringRegex = /<.+?>?[\s\S]+(<.+>|\/>)/
+export namespace Element {
+  export const legalStringRegex = /<.+?>?[\s\S]+(<.+>|\/>)/
 
-export const innerContentRegex = /(?<=(<.+>))[\s\S]+?(?=(<.+>))/
+  export const innerContentRegex = /(?<=(<.+>))[\s\S]+?(?=(<.+>))/
 
-export const elementAttrbuteRegex = /(?<=<)[^<>]+?(?=(\/)?>)/
+  // <div name="foo" /> --> 'div'
+  export const nameRegex = /(?<=<)[\S]+/
 
-export const isScopedElement = /(?<=<).+(?=\/>)/
+  // <div name="foo" class="att" /> --> ' name="foo" class="att" '
+  export const attributeRegex = /(?<=<[\s\S]+(?=\s))[\s\S]+?(?=\/?>)/
+
+  export const isScopedElement = /(?<=<).+(?=\/>)/
+}

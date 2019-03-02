@@ -8,4 +8,10 @@ export interface Element {
   }
 }
 
-export const legalStringRegex = /<.+>?[\s\S](<.+>|\/>)/
+export const legalStringRegex = /<.+?>?[\s\S]+(<.+>|\/>)/
+
+export const innerContentRegex = /(?<=(<.+>))[\s\S]+?(?=(<.+>))/
+
+export const elementAttrbuteRegex = /(?<=<)[^<>]+?(?=(\/)?>)/
+
+export const isScopedElement = /(?<=<).+(?=\/>)/

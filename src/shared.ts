@@ -10,7 +10,7 @@ export interface Element {
 export namespace Element {
   export const legalStringRegex = /<.+?>?[\s\S]+(<.+>|\/>)/
 
-  export const innerContentRegex = /(?<=(<.+>))[\s\S]+?(?=(<.+>))/
+  export const innerContentRegex = /(?<=<(\S+)(\s[^>]*)?>)[\s\S]*?(?=<\s*\/\1\s*>)/
 
   // <div name="foo" /> --> 'div'
   export const nameRegex = /(?<=<)[\S]+/

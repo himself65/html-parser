@@ -1,4 +1,4 @@
-import { Element } from './shard'
+import { Element } from './shared'
 
 export class Parser {
   static render (str: string) {

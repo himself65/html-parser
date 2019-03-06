@@ -1,4 +1,4 @@
-import { Element } from '../src/shard'
+import { Element } from '../src/shared'
 
 describe('regex unit test', () => {
   const testRegexArray = (array: any[], regex: RegExp) => {
